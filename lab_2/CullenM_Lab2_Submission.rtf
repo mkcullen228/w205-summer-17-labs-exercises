@@ -1,0 +1,88 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\ftech\fcharset77 Symbol;
+}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid101\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid102\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\ri0\partightenfactor0
+
+\f0\fs22 \cf0 Maura Cullen\
+W205 Spring \
+Lab 2 Submission \
+\
+\pard\tx0\pardeftab720\li480\fi-480\ri0\partightenfactor0
+\ls1\ilvl0\cf0 1.	List the HDFS contents of /user\
+\pard\pardeftab720\ri0\partightenfactor0
+\cf0 \
+\pard\pardeftab720\ri0\partightenfactor0
+
+\f1\fs17 \cf0 [w205@ip-172-31-60-226 ~]$ hdfs dfs -ls /user/w205\
+Found 1 items\
+-rw-r--r-- \'a0 1 w205 supergroup\'a0 \'a0 \'a0 \'a0 693 2017-05-22 03:08 /user/w205/derby.log\
+[w205@ip-172-31-60-226 ~]$ hdfs dfs -ls /user\
+Found 8 items\
+drwxr-xr-x \'a0 - mapred\'a0 supergroup\'a0 \'a0 \'a0 \'a0 \'a0 0 2017-05-22 02:54 /user/history\
+drwxrwxrwx \'a0 - hive\'a0 \'a0 supergroup\'a0 \'a0 \'a0 \'a0 \'a0 0 2017-05-22 02:54 /user/hive\
+drwxrwxrwx \'a0 - hue \'a0 \'a0 supergroup\'a0 \'a0 \'a0 \'a0 \'a0 0 2017-05-22 02:55 /user/hue\
+drwxrwxrwx \'a0 - jenkins supergroup\'a0 \'a0 \'a0 \'a0 \'a0 0 2017-05-22 02:54 /user/jenkins\
+drwxrwxrwx \'a0 - oozie \'a0 supergroup\'a0 \'a0 \'a0 \'a0 \'a0 0 2017-05-22 02:56 /user/oozie\
+drwxrwxrwx \'a0 - root\'a0 \'a0 supergroup\'a0 \'a0 \'a0 \'a0 \'a0 0 2017-05-22 02:55 /user/root\
+drwxr-xr-x \'a0 - hdfs\'a0 \'a0 supergroup\'a0 \'a0 \'a0 \'a0 \'a0 0 2017-05-22 02:58 /user/spark\
+drwxr-xr-x \'a0 - w205\'a0 \'a0 supergroup\'a0 \'a0 \'a0 \'a0 \'a0 0 2017-05-22 03:08 /user/w205\
+\pard\pardeftab720\ri0\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\pard\tx0\pardeftab720\li480\fi-480\ri0\partightenfactor0
+\ls2\ilvl0\cf0 2.	Inspect the output of the HDFS admin report and answer the following questions in a text file.\
+\pard\pardeftab720\li1080\fi-360\ri0\partightenfactor0
+\ls2\ilvl1
+\f2 \cf0 \'a5	
+\f0 Q1: How many live datanodes are there? 1 node\
+\ls2\ilvl1
+\f2 \'a5	
+\f0 Q2: How much non-DFS storage is used? 8160149504 (7.60 GB)\
+\ls2\ilvl1
+\f2 \'a5	
+\f0 Q3: How much DFS storage is used? 0.09% (143519744 (136.87 MB)\
+\pard\pardeftab720\ri0\partightenfactor0
+\cf0 \
+_______________________________________\
+starting historyserver, logging to /var/log/hadoop-mapreduce/mapred-mapred-historyserver-ip-172-31-60-226.out\
+Started Hadoop historyserver:\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 [\'a0 OK\'a0 ]\
+[root@ip-172-31-60-226 ~]# sudo -u hdfs hdfs dfsadmin -report\
+Configured Capacity: 158399967232 (147.52 GB)\
+Present Capacity: 150239817728 (139.92 GB)\
+DFS Remaining: 150096297984 (139.79 GB)\
+DFS Used: 143519744 (136.87 MB)\
+DFS Used%: 0.10%\
+Under replicated blocks: 0\
+Blocks with corrupt replicas: 0\
+Missing blocks: 0\
+Missing blocks (with replication factor 1): 0\
+\
+-------------------------------------------------\
+Live datanodes (1):\
+\
+Name: 127.0.0.1:50010 (localhost)\
+Hostname: ip-172-31-60-226.ec2.internal\
+Decommission Status : Normal\
+Configured Capacity: 158399967232 (147.52 GB)\
+DFS Used: 143519744 (136.87 MB)\
+Non DFS Used: 8160149504 (7.60 GB)\
+DFS Remaining: 150096297984 (139.79 GB)\
+DFS Used%: 0.09%\
+DFS Remaining%: 94.76%\
+Configured Cache Capacity: 0 (0 B)\
+Cache Used: 0 (0 B)\
+Cache Remaining: 0 (0 B)\
+Cache Used%: 100.00%\
+Cache Remaining%: 0.00%\
+Xceivers: 2\
+Last contact: Mon May 22 03:24:23 UTC 2017\
+\
+}
