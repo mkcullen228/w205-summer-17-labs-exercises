@@ -1,0 +1,263 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fnil\fcharset0 Menlo-Bold;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Italic;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\csgray\c0;\csgray\c100000;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid201\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid301\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat4\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid501\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid6}
+{\list\listtemplateid7\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid601\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid7}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}{\listoverride\listid7\listoverridecount0\ls7}}
+\margl1440\margr1440\vieww18620\viewh13660\viewkind0
+\deftab720
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+
+\f0\b\fs22 \cf0 \
+Maura Cullen\
+2017/06/05\
+W205- Spring 2017\
+Lab 5 Submission \
+\
+\
+Question 1: What is the output of ?\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\ri0\sb100\sa100\partightenfactor0
+\ls1\ilvl0
+\f1\b0 \cf0 {\listtext	\'95	}
+\f0\b I choose to look at the table \'93actor\'94. The output of \'93\\d actor is a description of the table \'93actor\'94. The print out gives the Column names, column types and modifier in the columns. It also provides the Primary key for the table. Shows what other tables reference this particular table and how they relate to each other. 
+\f1\b0 \
+\pard\tx720\pardeftab720\ri0\sb100\sa100\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\sb100\sa100\pardirnatural\partightenfactor0
+\cf2 \cb3 \CocoaLigature0 dvdrental=# \\d actor\
+                                         Table "public.actor"\
+   Column    |            Type             |                        Modifiers                         \
+-------------+-----------------------------+----------------------------------------------------------\
+ actor_id    | integer                     | not null default nextval('actor_actor_id_seq'::regclass)\
+ first_name  | character varying(45)       | not null\
+ last_name   | character varying(45)       | not null\
+ last_update | timestamp without time zone | not null default now()\
+Indexes:\
+    "actor_pkey" PRIMARY KEY, btree (actor_id)\
+    "idx_actor_last_name" btree (last_name)\
+Referenced by:\
+    TABLE "film_actor" CONSTRAINT "film_actor_actor_id_fkey" FOREIGN KEY (actor_id) REFERENCES actor(actor_id) ON UPDATE CASCADE ON DELETE RESTRICT\
+Triggers:\
+    last_updated BEFORE UPDATE ON actor FOR EACH ROW EXECUTE PROCEDURE last_updated()\cf0 \cb1 \CocoaLigature1 \
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+\cf0 \
+\
+\
+
+\f0\b Question 2: What is the schema for the customer table?
+\f1\b0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\sb100\sa100\pardirnatural\partightenfactor0
+\cf2 \cb3 \CocoaLigature0 \
+                                          Table "public.customer"\
+   Column    |            Type             |                           Modifiers                            \
+-------------+-----------------------------+----------------------------------------------------------------\
+ customer_id | integer                     | not null default nextval('customer_customer_id_seq'::regclass)\
+ store_id    | smallint                    | not null\
+ first_name  | character varying(45)       | not null\
+ last_name   | character varying(45)       | not null\
+ email       | character varying(50)       | \
+ address_id  | smallint                    | not null\
+ activebool  | boolean                     | not null default true\
+ create_date | date                        | not null default ('now'::text)::date\
+ last_update | timestamp without time zone | default now()\
+ active      | integer                     | \
+Indexes:\
+    "customer_pkey" PRIMARY KEY, btree (customer_id)\
+    "idx_fk_address_id" btree (address_id)\
+    "idx_fk_store_id" btree (store_id)\
+    "idx_last_name" btree (last_name)\
+Foreign-key constraints:\
+    "customer_address_id_fkey" FOREIGN KEY (address_id) REFERENCES address(address_id) ON UPDATE CASCADE ON DELETE RESTRICT\
+    "customer_store_id_fkey" FOREIGN KEY (store_id) REFERENCES store(store_id) ON UPDATE CASCADE ON DELETE RESTRICT\
+Referenced by:\
+    TABLE "payment" CONSTRAINT "payment_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON UPDATE CASCADE ON DELETE RESTRICT\
+    TABLE "payment_p2007_01" CONSTRAINT "payment_p2007_01_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customer(customer_id)\
+    TABLE "payment_p2007_02" CONSTRAINT "payment_p2007_02_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customer(customer_id)\
+    TABLE "payment_p2007_03" CONSTRAINT "payment_p2007_03_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customer(customer_id)\
+    TABLE "payment_p2007_04" CONSTRAINT "payment_p2007_04_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customer(customer_id)\
+    TABLE "payment_p2007_05" CONSTRAINT "payment_p2007_05_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customer(customer_id)\
+    TABLE "payment_p2007_06" CONSTRAINT "payment_p2007_06_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customer(customer_id)\
+    TABLE "rental" CONSTRAINT "rental_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON UPDATE CASCADE ON DELETE RESTRICT\
+Triggers:\
+    last_updated BEFORE UPDATE ON customer FOR EACH ROW EXECUTE PROCEDURE last_updated()\cf0 \cb1 \CocoaLigature1 \
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+\cf0 \
+
+\f0\b Question 3: What similarities do you see in the explain planes for these 3 queries?
+\f1\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\ri0\sb100\sa100\partightenfactor0
+\ls2\ilvl0
+\f0\b \cf0 {\listtext	\'95	}Each plan shows the cost, number of rows and width for the query to run\
+{\listtext	\'95	}Each plan has an ordered explanation of how the query will be executed and which functions will be used to complete the query. It also breaks down the cot of each part of the query.\
+{\listtext	\'95	}Two of the query plans start with an append. \
+{\listtext	\'95	}Each query preforms at least one sequential scan to complete the query 
+\f1\b0 \
+\pard\tx720\pardeftab720\ri0\sb100\sa100\partightenfactor0
+\cf0 \
+\pard\tx0\pardeftab720\li480\fi-480\ri0\sb100\sa100\partightenfactor0
+\ls3\ilvl0
+\f2\i \cf0 1.	Projection:
+\f1\i0 \
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+\cf0 sql   SELECT customer_id, first_name, last_name FROM customer; \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\sb100\sa100\pardirnatural\partightenfactor0
+\cf2 \cb3 \CocoaLigature0                          QUERY PLAN                         \
+------------------------------------------------------------\
+ Seq Scan on customer  (cost=0.00..14.99 rows=599 width=17)\
+(1 row)\cf0 \cb1 \CocoaLigature1 \
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+
+\f2\i \cf0 1. Projection and Selection #1:
+\f1\i0 \
+sql   SELECT customer_id,          amount,          payment_date   FROM payment   WHERE amount <= 1     OR amount >= 8;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\sb100\sa100\pardirnatural\partightenfactor0
+\cf2 \cb3 \CocoaLigature0 dvdrental=# EXPLAIN SELECT customer_id, amount, payment_date FROM payment WHERE (amount <= 1 OR amount >= 8);\
+                                        QUERY PLAN                                        \
+------------------------------------------------------------------------------------------\
+ Result  (cost=0.00..420.63 rows=5178 width=19)\
+   ->  Append  (cost=0.00..420.63 rows=5178 width=19)\
+         ->  Seq Scan on payment  (cost=0.00..29.95 rows=739 width=21)\
+               Filter: ((amount <= 1::numeric) OR (amount >= 8::numeric))\
+         ->  Seq Scan on payment_p2007_01 payment  (cost=0.00..26.36 rows=266 width=18)\
+               Filter: ((amount <= 1::numeric) OR (amount >= 8::numeric))\
+         ->  Seq Scan on payment_p2007_02 payment  (cost=0.00..51.68 rows=531 width=18)\
+               Filter: ((amount <= 1::numeric) OR (amount >= 8::numeric))\
+         ->  Seq Scan on payment_p2007_03 payment  (cost=0.00..126.66 rows=1268 width=18)\
+               Filter: ((amount <= 1::numeric) OR (amount >= 8::numeric))\
+         ->  Seq Scan on payment_p2007_04 payment  (cost=0.00..151.31 rows=1557 width=18)\
+               Filter: ((amount <= 1::numeric) OR (amount >= 8::numeric))\
+         ->  Seq Scan on payment_p2007_05 payment  (cost=0.00..4.73 rows=78 width=17)\
+               Filter: ((amount <= 1::numeric) OR (amount >= 8::numeric))\
+         ->  Seq Scan on payment_p2007_06 payment  (cost=0.00..29.95 rows=739 width=21)\
+               Filter: ((amount <= 1::numeric) OR (amount >= 8::numeric))\
+(16 rows)\cf0 \cb1 \CocoaLigature1 \
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+\cf0 \
+\pard\tx0\pardeftab720\li480\fi-480\ri0\sb100\sa100\partightenfactor0
+\ls4\ilvl0
+\f2\i \cf0 1.	Projection and Selection #2:
+\f1\i0 \cf2 \cb3 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\sb100\sa100\pardirnatural\partightenfactor0
+\cf2                                                              ^\
+dvdrental=# EXPLAIN SELECT customer_id, payment_id, amount FROM payment WHERE amount BETWEEN 5 AND 9;\
+                                        QUERY PLAN                                        \
+------------------------------------------------------------------------------------------\
+ Result  (cost=0.00..420.63 rows=3600 width=14)\
+   ->  Append  (cost=0.00..420.63 rows=3600 width=14)\
+         ->  Seq Scan on payment  (cost=0.00..29.95 rows=7 width=17)\
+               Filter: ((amount >= 5::numeric) AND (amount <= 9::numeric))\
+         ->  Seq Scan on payment_p2007_01 payment  (cost=0.00..26.36 rows=242 width=14)\
+               Filter: ((amount >= 5::numeric) AND (amount <= 9::numeric))\
+         ->  Seq Scan on payment_p2007_02 payment  (cost=0.00..51.68 rows=506 width=14)\
+               Filter: ((amount >= 5::numeric) AND (amount <= 9::numeric))\
+         ->  Seq Scan on payment_p2007_03 payment  (cost=0.00..126.66 rows=1290 width=14)\
+               Filter: ((amount >= 5::numeric) AND (amount <= 9::numeric))\
+         ->  Seq Scan on payment_p2007_04 payment  (cost=0.00..151.31 rows=1535 width=14)\
+               Filter: ((amount >= 5::numeric) AND (amount <= 9::numeric))\
+         ->  Seq Scan on payment_p2007_05 payment  (cost=0.00..4.73 rows=13 width=13)\
+               Filter: ((amount >= 5::numeric) AND (amount <= 9::numeric))\
+         ->  Seq Scan on payment_p2007_06 payment  (cost=0.00..29.95 rows=7 width=17)\
+               Filter: ((amount >= 5::numeric) AND (amount <= 9::numeric))\
+(16 rows)\cf0 \cb1 \CocoaLigature1 \
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+\cf0 \
+
+\f0\b Question 4: What is the difference between the plans for the Partitioned table and the union query? \
+Why do you think this difference exists?\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\ri0\sb100\sa100\partightenfactor0
+\ls5\ilvl0\cf0 {\listtext	\'95	}Is that the Union only has to perform one HashAggreagate and then appends and scans the table where as the partition performs two hash aggregates before append and scanning the tables.  \
+{\listtext	\'95	}I think this difference exists because the second query creates a user defined, in line table and then preforms the scans on the subtable where as the first query preforms the scan on the entire table and the groups the results. \
+ \
+\pard\tx0\pardeftab720\li480\fi-480\ri0\sb100\sa100\partightenfactor0
+\ls6\ilvl0
+\f1\b0 \cf0 4.	Merging Data: UNIONs: Run the following 2 statements:\
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+\cf0 Union of 2 tables: sql   SELECT u.customer_id,          sum(u.amount)   FROM     ( SELECT *      FROM payment_p2007_01      UNION SELECT *      FROM payment_p2007_02) u   WHERE u.payment_date <= '2007-02-01 00:00:00'::TIMESTAMP WITHOUT time ZONE   GROUP BY u.customer_id ; Partition a Table: sql   SELECT customer_id,   sum(amount)   FROM payment   WHERE payment_date <= '2007-02-01 00:00:00'::TIMESTAMP WITHOUT time ZONE   GROUP BY customer_id ; \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\sb100\sa100\pardirnatural\partightenfactor0
+\cf2 \cb3 \CocoaLigature0 # 1\
+dvdrental=# EXPLAIN SELECT customer_id,\
+dvdrental-#   sum(amount)\
+dvdrental-#   FROM payment\
+dvdrental-#   WHERE payment_date <= '2007-02-01 00:00:00'::TIMESTAMP WITHOUT time ZONE\
+dvdrental-#   GROUP BY customer_id ;\
+                                         QUERY PLAN                                         \
+--------------------------------------------------------------------------------------------\
+ HashAggregate  (cost=103.99..106.49 rows=200 width=11)\
+   ->  Append  (cost=0.00..95.99 rows=1601 width=11)\
+         ->  Seq Scan on payment  (cost=0.00..26.62 rows=443 width=13)\
+               Filter: (payment_date <= '2007-02-01 00:00:00'::timestamp without time zone)\
+         ->  Seq Scan on payment_p2007_01 payment  (cost=0.00..23.46 rows=1157 width=10)\
+               Filter: (payment_date <= '2007-02-01 00:00:00'::timestamp without time zone)\
+         ->  Seq Scan on payment_p2007_02 payment  (cost=0.00..45.90 rows=1 width=10)\
+               Filter: (payment_date <= '2007-02-01 00:00:00'::timestamp without time zone)\
+(8 rows)\
+\
+# 2\
+dvdrental=# EXPLAIN   SELECT u.customer_id,\
+dvdrental-#          sum(u.amount)\
+dvdrental-#   FROM\
+dvdrental-#     ( SELECT *\
+dvdrental(#      FROM payment_p2007_01\
+dvdrental(#      UNION SELECT *\
+dvdrental(#      FROM payment_p2007_02) u\
+dvdrental-#   WHERE u.payment_date <= '2007-02-01 00:00:00'::TIMESTAMP WITHOUT time ZONE\
+dvdrental-#   GROUP BY u.customer_id ;\
+                                            QUERY PLAN                                            \
+--------------------------------------------------------------------------------------------------\
+ HashAggregate  (cost=127.26..129.76 rows=200 width=13)\
+   ->  HashAggregate  (cost=98.31..109.89 rows=1158 width=28)\
+         ->  Append  (cost=0.00..80.94 rows=1158 width=28)\
+               ->  Seq Scan on payment_p2007_01  (cost=0.00..23.46 rows=1157 width=28)\
+                     Filter: (payment_date <= '2007-02-01 00:00:00'::timestamp without time zone)\
+               ->  Seq Scan on payment_p2007_02  (cost=0.00..45.90 rows=1 width=28)\
+                     Filter: (payment_date <= '2007-02-01 00:00:00'::timestamp without time zone)\
+(7 rows)\
+\
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+
+\f0\b \cf0 \cb1 \CocoaLigature1 Question 5: What join algorithm is used for the inner join?
+\f1\b0  \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\ri0\sb100\sa100\partightenfactor0
+\ls7\ilvl0\cf0 {\listtext	\'95
+\f0\b 	}Hash Join 
+\f1\b0 \
+\pard\tx720\pardeftab720\ri0\sb100\sa100\partightenfactor0
+
+\f0\b \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb100\sa100\pardirnatural\partightenfactor0
+
+\f1\b0 \cf0 5.	Merging Data: JOINs: sql   SELECT customer.customer_id,      first_name,      last_name,      email,      amount,      payment_date   FROM customer   INNER JOIN payment ON payment.customer_id = customer.customer_id; \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\sb100\sa100\pardirnatural\partightenfactor0
+\cf2 \cb3 \CocoaLigature0 dvdrental=# EXPLAIN SELECT customer.customer_id,\
+dvdrental-#          first_name,\
+dvdrental-#          last_name,\
+dvdrental-#          email,\
+dvdrental-#          amount,\
+dvdrental-#          payment_date\
+dvdrental-#   FROM customer\
+dvdrental-#   INNER JOIN payment ON payment.customer_id = customer.customer_id;\
+                                        QUERY PLAN                                        \
+------------------------------------------------------------------------------------------\
+ Hash Join  (cost=22.48..606.82 rows=18709 width=65)\
+   Hash Cond: (public.payment.customer_id = customer.customer_id)\
+   ->  Append  (cost=0.00..327.09 rows=18709 width=18)\
+         ->  Seq Scan on payment  (cost=0.00..23.30 rows=1330 width=21)\
+         ->  Seq Scan on payment_p2007_01 payment  (cost=0.00..20.57 rows=1157 width=18)\
+         ->  Seq Scan on payment_p2007_02 payment  (cost=0.00..40.12 rows=2312 width=18)\
+         ->  Seq Scan on payment_p2007_03 payment  (cost=0.00..98.44 rows=5644 width=18)\
+         ->  Seq Scan on payment_p2007_04 payment  (cost=0.00..117.54 rows=6754 width=18)\
+         ->  Seq Scan on payment_p2007_05 payment  (cost=0.00..3.82 rows=182 width=17)\
+         ->  Seq Scan on payment_p2007_06 payment  (cost=0.00..23.30 rows=1330 width=21)\
+   ->  Hash  (cost=14.99..14.99 rows=599 width=49)\
+         ->  Seq Scan on customer  (cost=0.00..14.99 rows=599 width=49)\
+(12 rows)\
+\
+\cf0 \cb1 \CocoaLigature1 \
+}
