@@ -1,0 +1,186 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\csgray\c0;\csgray\c100000;}
+\margl1440\margr1440\vieww21000\viewh17160\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \cb3 \CocoaLigature0 \
+-rw-r--r--   1 w205 supergroup    5192992 2017-06-07 04:08 lab_3/weblog_data/weblog_lab.csv\
+[w205@ip-172-31-11-186 ~]$ hive\
+SLF4J: Class path contains multiple SLF4J bindings.\
+SLF4J: Found binding in [jar:file:/usr/lib/zookeeper/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]\
+SLF4J: Found binding in [jar:file:/home/w205/spark15/lib/spark-assembly-1.5.0-hadoop2.6.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]\
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\
+SLF4J: Class path contains multiple SLF4J bindings.\
+SLF4J: Found binding in [jar:file:/usr/lib/zookeeper/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]\
+SLF4J: Found binding in [jar:file:/home/w205/spark15/lib/spark-assembly-1.5.0-hadoop2.6.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]\
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\
+\
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties\
+WARNING: Hive CLI is deprecated and migration to Beeline is recommended.\
+hive> CREATE EXTERNAL TABLE IF NOT EXISTS weblogs_flat\
+    > (weblog string)\
+    > ROW FORMAT DELIMITED\
+    > STORED AS TEXTFILE\
+    > LOCATION '/user/w205/lab_3/weblog_data';\
+OK\
+Time taken: 0.605 seconds\
+hive> SELECT * FROM weblogs_flat LIMIT 10;\
+OK\
+date	userid	sessionid	productid	refererurl\
+2008-01-31 15:54:25	__RequestVerificationToken_Lw__=2ADB2	;+.ASPXAUTH=C31HDWD05KU00943S	/product/YJ29IOCVQ	http://www.abc.com\
+2005-12-08 02:36:30	__RequestVerificationToken_Lw__=13233	;+.ASPXAUTH=H7HTS9Q9CC8ZXSERD	/product/MVI9HHP8A	http://www.ebay.com\
+2015-06-07 23:27:58	__RequestVerificationToken_Lw__=B322B	;+.ASPXAUTH=58SZL3FPGFUS8KLNA	/search/P5XKO3AC9	http://www.abc.com\
+2009-03-12 03:16:27	__RequestVerificationToken_Lw__=1A1C2	;+.ASPXAUTH=VBWZJJR6CG85YSOM3	/product/A13025WBT	http://www.shophealthy.com\
+2014-07-23 08:36:03	__RequestVerificationToken_Lw__=2B1C2	;+.ASPXAUTH=VXBLEXUC177T4S7AA	/search/5PI9XD6LZ	http://www.facebook.com\
+2002-12-30 08:42:09	__RequestVerificationToken_Lw__=B11A2	;+.ASPXAUTH=YABJBNQ7HQWYST1CV	/product/WS80XJFW2	http://www.xyz.com\
+2004-11-03 20:29:10	__RequestVerificationToken_Lw__=11C2C	;+.ASPXAUTH=2F90NTSZM9LJH7IGU	/product/OJ201IBUN	http://www.homeshop18.com\
+2012-01-26 12:39:57	__RequestVerificationToken_Lw__=DD1BC	;+.ASPXAUTH=SEWRRGGBHGP2G6H2J	/product/OA3QGXF1U	http://www.xyz.com\
+2008-04-30 02:01:34	__RequestVerificationToken_Lw__=C3CDA	;+.ASPXAUTH=6OB103SJY0RGI3UXM	/search/K1IRBE1DU	http://www.abc.com\
+Time taken: 0.461 seconds, Fetched: 10 row(s)\
+hive> \
+    > SELECT * FROM weblogs_flat WHERE weblog NOT LIKE 'date%' LIMIT 10;\
+OK\
+2008-01-31 15:54:25	__RequestVerificationToken_Lw__=2ADB2	;+.ASPXAUTH=C31HDWD05KU00943S	/product/YJ29IOCVQ	http://www.abc.com\
+2005-12-08 02:36:30	__RequestVerificationToken_Lw__=13233	;+.ASPXAUTH=H7HTS9Q9CC8ZXSERD	/product/MVI9HHP8A	http://www.ebay.com\
+2015-06-07 23:27:58	__RequestVerificationToken_Lw__=B322B	;+.ASPXAUTH=58SZL3FPGFUS8KLNA	/search/P5XKO3AC9	http://www.abc.com\
+2009-03-12 03:16:27	__RequestVerificationToken_Lw__=1A1C2	;+.ASPXAUTH=VBWZJJR6CG85YSOM3	/product/A13025WBT	http://www.shophealthy.com\
+2014-07-23 08:36:03	__RequestVerificationToken_Lw__=2B1C2	;+.ASPXAUTH=VXBLEXUC177T4S7AA	/search/5PI9XD6LZ	http://www.facebook.com\
+2002-12-30 08:42:09	__RequestVerificationToken_Lw__=B11A2	;+.ASPXAUTH=YABJBNQ7HQWYST1CV	/product/WS80XJFW2	http://www.xyz.com\
+2004-11-03 20:29:10	__RequestVerificationToken_Lw__=11C2C	;+.ASPXAUTH=2F90NTSZM9LJH7IGU	/product/OJ201IBUN	http://www.homeshop18.com\
+2012-01-26 12:39:57	__RequestVerificationToken_Lw__=DD1BC	;+.ASPXAUTH=SEWRRGGBHGP2G6H2J	/product/OA3QGXF1U	http://www.xyz.com\
+2008-04-30 02:01:34	__RequestVerificationToken_Lw__=C3CDA	;+.ASPXAUTH=6OB103SJY0RGI3UXM	/search/K1IRBE1DU	http://www.abc.com\
+2003-08-23 09:44:43	__RequestVerificationToken_Lw__=1BB2D	;+.ASPXAUTH=1NRGS0EVQ46Q1D5E2	/product/ANGEKDMKM	http://www.shophealthy.com\
+Time taken: 0.143 seconds, Fetched: 10 row(s)\
+hive> CREATE EXTERNAL TABLE IF NOT EXISTS weblogs_schema\
+    > (datetime string,\
+    > user_id string,\
+    > session_id string,\
+    > product_id string,\
+    > referrer string)\
+    > ROW FORMAT DELIMITED\
+    > FIELDS TERMINATED BY '\\t'\
+    > STORED AS TEXTFILE\
+    > LOCATION '/user/w205/lab_3/weblog_data';\
+OK\
+Time taken: 0.053 seconds\
+hive> SELECT user_id, COUNT(user_id) AS log_count\
+    > FROM weblogs_schema GROUP BY user_id\
+    > ORDER BY log_count DESC\
+    > LIMIT 50;\
+Query ID = w205_20170607042727_fc490929-29aa-4753-844d-39a316f0d7b0\
+Total jobs = 2\
+Launching Job 1 out of 2\
+Number of reduce tasks not specified. Estimated from input data size: 1\
+In order to change the average load for a reducer (in bytes):\
+  set hive.exec.reducers.bytes.per.reducer=<number>\
+In order to limit the maximum number of reducers:\
+  set hive.exec.reducers.max=<number>\
+In order to set a constant number of reducers:\
+  set mapreduce.job.reduces=<number>\
+Starting Job = job_1496808233753_0001, Tracking URL = http://ip-172-31-11-186.ec2.internal:8088/proxy/application_1496808233753_0001/\
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1496808233753_0001\
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1\
+2017-06-07 04:28:05,387 Stage-1 map = 0%,  reduce = 0%\
+2017-06-07 04:28:12,876 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 2.79 sec\
+2017-06-07 04:28:20,422 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 5.9 sec\
+MapReduce Total cumulative CPU time: 5 seconds 900 msec\
+Ended Job = job_1496808233753_0001\
+Launching Job 2 out of 2\
+Number of reduce tasks determined at compile time: 1\
+In order to change the average load for a reducer (in bytes):\
+  set hive.exec.reducers.bytes.per.reducer=<number>\
+In order to limit the maximum number of reducers:\
+  set hive.exec.reducers.max=<number>\
+In order to set a constant number of reducers:\
+  set mapreduce.job.reduces=<number>\
+Starting Job = job_1496808233753_0002, Tracking URL = http://ip-172-31-11-186.ec2.internal:8088/proxy/application_1496808233753_0002/\
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1496808233753_0002\
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1\
+2017-06-07 04:28:29,711 Stage-2 map = 0%,  reduce = 0%\
+2017-06-07 04:28:37,185 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 2.56 sec\
+2017-06-07 04:28:43,523 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 4.6 sec\
+MapReduce Total cumulative CPU time: 4 seconds 600 msec\
+Ended Job = job_1496808233753_0002\
+MapReduce Jobs Launched: \
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 5.9 sec   HDFS Read: 5199465 HDFS Write: 867513 SUCCESS\
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 4.6 sec   HDFS Read: 871961 HDFS Write: 2001 SUCCESS\
+Total MapReduce CPU Time Spent: 10 seconds 500 msec\
+OK\
+__RequestVerificationToken_Lw__=2C2DB	10\
+__RequestVerificationToken_Lw__=3DDC1	9\
+__RequestVerificationToken_Lw__=A1BC3	9\
+__RequestVerificationToken_Lw__=111AA	9\
+__RequestVerificationToken_Lw__=233C3	9\
+__RequestVerificationToken_Lw__=A223D	9\
+__RequestVerificationToken_Lw__=B2CC1	9\
+__RequestVerificationToken_Lw__=113B3	9\
+__RequestVerificationToken_Lw__=2BDC3	9\
+__RequestVerificationToken_Lw__=D13BD	9\
+__RequestVerificationToken_Lw__=3BB1C	9\
+__RequestVerificationToken_Lw__=32B2B	9\
+__RequestVerificationToken_Lw__=21DCC	9\
+__RequestVerificationToken_Lw__=A31AB	9\
+__RequestVerificationToken_Lw__=DBBC1	8\
+__RequestVerificationToken_Lw__=2A2C1	8\
+__RequestVerificationToken_Lw__=B2B32	8\
+__RequestVerificationToken_Lw__=B32C2	8\
+__RequestVerificationToken_Lw__=BD11A	8\
+__RequestVerificationToken_Lw__=33ABD	8\
+__RequestVerificationToken_Lw__=CBCD3	8\
+__RequestVerificationToken_Lw__=B13AB	8\
+__RequestVerificationToken_Lw__=AAABA	8\
+__RequestVerificationToken_Lw__=D1DBD	8\
+__RequestVerificationToken_Lw__=DAD1D	8\
+__RequestVerificationToken_Lw__=3AA3C	8\
+__RequestVerificationToken_Lw__=A1D22	8\
+__RequestVerificationToken_Lw__=CA22C	8\
+__RequestVerificationToken_Lw__=AA1D3	8\
+__RequestVerificationToken_Lw__=B232C	8\
+__RequestVerificationToken_Lw__=DA1D2	8\
+__RequestVerificationToken_Lw__=1133C	8\
+__RequestVerificationToken_Lw__=2CD1D	8\
+__RequestVerificationToken_Lw__=CB1BC	8\
+__RequestVerificationToken_Lw__=2A231	8\
+__RequestVerificationToken_Lw__=C2221	8\
+__RequestVerificationToken_Lw__=1221A	8\
+__RequestVerificationToken_Lw__=CA3DD	8\
+__RequestVerificationToken_Lw__=1A2CA	8\
+__RequestVerificationToken_Lw__=31A2B	8\
+__RequestVerificationToken_Lw__=11B3B	8\
+__RequestVerificationToken_Lw__=B2CCB	8\
+__RequestVerificationToken_Lw__=11DBC	8\
+__RequestVerificationToken_Lw__=B1ADC	8\
+__RequestVerificationToken_Lw__=1A2C1	8\
+__RequestVerificationToken_Lw__=A1ABB	8\
+__RequestVerificationToken_Lw__=12CD1	8\
+__RequestVerificationToken_Lw__=D3DA2	7\
+__RequestVerificationToken_Lw__=DD2AB	7\
+__RequestVerificationToken_Lw__=C22C2	7\
+Time taken: 50.261 seconds, Fetched: 50 row(s)\
+hive> \
+    > CREATE EXTERNAL TABLE IF NOT EXISTS user_info\
+    > ( \
+    >  datetime string,\
+    >  user_id string,\
+    >  first_name string,\
+    >  last_name string,\
+    >  location string\
+    > )\
+    >  ROW FORMAT DELIMITED\
+    >  FIELDS TERMINATED BY '\\t'\
+    >  STORED AS TEXTFILE\
+    >  LOCATION '/user/w205/lab_3/user_data'  \
+    > \
+    > ;\
+OK\
+Time taken: 0.039 seconds\
+hive> \
+}
