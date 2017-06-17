@@ -1,3 +1,8 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
 
 # MIDS W205 : Lab 4      
 |                      |        |                     |                                                  |

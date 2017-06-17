@@ -1,0 +1,62 @@
+Last update: Dylan Kenny 6/14/2017
+
+Step 0 Corrections
+It appears that the spark that we should use is actually in /data/spark15.
+The prompt refers to a .bash_profile file. This is in your home directory, so it's actually, ~/.bash_profile . This file does not contain the exports mentioned. SPARK_HOME is actually defined in /etc/profile, which gets applied to all users. This explains why root has a SPARK_HOME variable, despite it not actually linking to anything. The first export isn't really necessary (and also shouldn't link to /usr/lib/spark, as it doesn't exist), the 2nd one is already defined in /etc/profile, and the 3rd is not executed yet. You should add the following export to your ~/.bash_profile:
+
+export SPARK_HOME=/data/spark15
+export PATH=$SPARK_HOME/bin:$PATH
+
+then exit out of the w205 user, and su - w205 again, so that it reloads your shell and reads your .bash_profile.
+
+The updated link specifically for the crime dataset is:
+https://github.com/UC-Berkeley-I-School/w205-spring-17-labs-exercises/tree/master/data/Crimes_-_2001_to_present_data
+This was specific to my section though, so change the "w205-spring-17-labs-exercises" to match your class' repo.
+
+The link you want to clone is outdated. When you do a git clone, use the following link, which you probably have cloned already (Make a similar adjustment to make sure you're looking at your section and not my old Spring section):
+https://github.com/UC-Berkeley-I-School/w205-spring-17-labs-exercises.git
+
+Protip:
+I recommend cloning this into your home directory by doing the following (as
+the w205 user):
+cd
+git clone https://github.com/UC-Berkeley-I-School/w205-spring-17-labs-exercises.git
+You'll now be able to find all of the homeworks in a convenient w205-spring-17-labs-exercises. If the professor updates the homework, you can just go into that directory and run git pull to update that repo.
+Please treat this repo as read only. I wouldn't recommend working inside this directory, but simply use it to copy files from.
+
+Step 1 Corrections
+It says that it should be in /usr/lib/spark/conf , but if you followed my step above, it'll actually be in  /data/spark15/conf
+
+Protip:
+If you're not sure how to copy/edit files. Try the following:
+#Copy the template file to a new file:
+cp $SPARK_HOME/conf/log4j.properties.template $SPARK_HOME/conf/log4j.properties
+#Open up a text editor for the file:
+vi $SPARK_HOME/conf/log4j.properties
+Press 'i' to go into "insert mode"
+Add any text you want
+When you're done editing, press Escape to leave insert mode.
+Type :wq and hit enter. :wq = write and quit (aka save and close). If you wanted to just quit, you can use :q. If you wanted to forcefullly quit and you've made changes you want ignored, then angrily run :q!
+
+
+Step 2
+If you cloned the repo into the w205 home directory, then you can use the
+command (changing spring-17 to match your section):
+crimedata=sc.textFile("file:///home/w205/w205-spring-17-labs-exercises/data/Crimes_-_2001_to_present_data/Crimes_-_2005_to_present.csv")
+
+Step 6
+If you cloned the git repo, you should be able to load in the weblog_lab.csv with the following command (change the section):
+LOAD DATA LOCAL INPATH "/home/w205/w205-spring-17-labs-exercises/data/weblog_lab.csv" INTO TABLE web_session_log;
+
+Step 7
+Web_Session_Log ias referred to as both "Web_Session_Log" and "Web_Session_log". Make sure you stay consistent or your createDataFrame will complain it's not defined.
+
+The one query has a few issues, which are kinda addressed in the prompt below the query.
+web_session_log needs to be Web_Session_Log (or whichever you named it) and 'refereurl' should be REFERERURL (quotes intentionally discarded). Final query should look like:
+
+select count(*) from Web_Session_Log where REFERERURL= "http://www.ebay.com"
+
+
+
+
+crimedata=sc.textFile("file:///home/w205/w205-summer-17-labs-exercises/data/Crimes_-_2001_to_present_data/Crimes_-_2001_to_present.csv”)
