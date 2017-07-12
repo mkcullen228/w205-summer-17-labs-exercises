@@ -1,8 +1,7 @@
 - hospitals
 DROP TABLE hospitals;
 CREATE EXTERNAL TABLE hospitals
-(
-	provider_id string, 
+string, 
 	hospital_name string,
 	address string,
 	city string,
